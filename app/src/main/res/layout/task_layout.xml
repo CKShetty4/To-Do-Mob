@@ -18,7 +18,6 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:paddingStart="8dp"
-            android:buttonTint="@android:color/holo_purple"
             tools:text="This is the sample text inside the application"
             tools:ignore="RtlSymmetry" />
 

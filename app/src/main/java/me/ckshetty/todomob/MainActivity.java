@@ -10,20 +10,41 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
-public class MainActivity extends AppCompatActivity {
+import me.ckshetty.todomob.Adapter.ToDoAdapter;
+import me.ckshetty.todomob.Model.ToDoModel;
 
-    private RecyclerView tasksRecyclerView;
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Objects.requireNonNull(getSupportActionBar()).hide();
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
 
-        tasksRecyclerView = findViewById(R.id.tasksRecyclerView);
+        List<ToDoModel> taskList = new ArrayList<>();
+
+        RecyclerView tasksRecyclerView = findViewById(R.id.tasksRecyclerView);
         tasksRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        ToDoAdapter tasksAdapter = new ToDoAdapter(this);
+        tasksRecyclerView.setAdapter(tasksAdapter);
 
+        ToDoModel task=new ToDoModel();
+        task.setTask("This is a task to test");
+        task.setStatus(0);
+        task.setId(1);
+
+        taskList.add(task);
+        taskList.add(task);
+        taskList.add(task);
+        taskList.add(task);
+        taskList.add(task);
+
+        tasksAdapter.setTasks(taskList);
     }
 }

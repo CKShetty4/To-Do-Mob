@@ -1,5 +1,6 @@
 package me.ckshetty.todomob.Adapter;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,9 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
     private List<ToDoModel> todoList;
     private MainActivity activity;
 
+    public ToDoAdapter(MainActivity activity) {
+        this.activity = activity;
+    }
     @NonNull
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
@@ -38,6 +42,12 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
     @Override
     public int getItemCount() {
         return todoList.size();
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    public void setTasks(List<ToDoModel> todoList) {
+        this.todoList = todoList;
+        notifyDataSetChanged();
     }
 
 
