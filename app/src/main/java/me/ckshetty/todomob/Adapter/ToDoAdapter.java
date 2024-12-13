@@ -22,13 +22,14 @@ import me.ckshetty.todomob.Utils.DatabaseHandler;
 
 public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
     private List<ToDoModel> todoList;
-    private MainActivity activity;
-    private DatabaseHandler db;
+    private final MainActivity activity;
+    private final DatabaseHandler db;
 
     public ToDoAdapter(DatabaseHandler db, MainActivity activity) {
-        this.db=db;
+        this.db = db;
         this.activity = activity;
     }
+
     @NonNull
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
@@ -58,6 +59,7 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
     private boolean toBoolean(int n) {
         return n != 0;
     }
+
     @Override
     public int getItemCount() {
         return todoList.size();
